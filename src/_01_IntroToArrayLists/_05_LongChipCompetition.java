@@ -49,7 +49,7 @@ public class _05_LongChipCompetition {
 			}
 		}
 		
-		System.out.println(owner.getName() + "Has the longest chip");
+		System.out.println(owner.getName() + " has the longest chip");
 	}
 }
 

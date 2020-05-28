@@ -5,8 +5,7 @@ public class IntegerStack {
 	
 	//2. complete the constructor by initializing the member array
 	//   to a new array of length 0. This prevents null pointer exceptions.
-	public IntegerStack() {
-	}
+	
 	
 	//3. Complete the steps in the push method.
 	public void push(int v) {
