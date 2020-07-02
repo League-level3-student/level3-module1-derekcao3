@@ -1,5 +1,7 @@
 package _04_HangMan;
 
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.Stack;
 
@@ -10,9 +12,10 @@ import javax.swing.JPanel;
 
 import _03_IntroToStacks._02_TextUndoRedo;
 
-public class HangMan{
+public class HangMan implements KeyListener{
 	JLabel label;
 	Stack<String> game;
+	String s;
 	public static void main(String[] args) {
 		HangMan hangman = new HangMan();
 		hangman.createUI();
@@ -27,6 +30,7 @@ public class HangMan{
 		frame.add(panel);
 		label = new JLabel();
 		panel.add(label);
+		frame.addKeyListener(this);
 		
 	
 	}
@@ -38,11 +42,40 @@ public class HangMan{
 		game.push(Utilities.readRandomLineFromFile("dictionary.txt"));
 		
 		}
-		String s = game.pop();
-		label.setText("_");
+		s = game.pop();
+		label.setText("");
 		for (int i = 0; i < s.length(); i++) {
 			label.setText(label.getText() + " _");
 		}
+		
+		System.out.println(s);
+		int lives = 5;
+		
+	}
+	@Override
+	public void keyTyped(KeyEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void keyPressed(KeyEvent e) {
+		// TODO Auto-generated method stub
+		String text = label.getText().replace(" ", "");
+		label.setText("");
+		for (int i = 0; i < s.length(); i++) {
+			if(e.getKeyChar()==s.charAt(i)) {
+				char d = s.charAt(i);
+				label.setText(label.getText() + " " +d);
+			}
+			else {
+				label.setText(label.getText() + " " + text.charAt(i));
+			}
+			
+		}
+	}
+	@Override
+	public void keyReleased(KeyEvent e) {
+		// TODO Auto-generated method stub
 		
 	}
 	
